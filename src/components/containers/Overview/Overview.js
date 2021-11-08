@@ -1,14 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import colors from "../../../colors";
 import OverviewItem from "./OverviewItem";
+import ScheduleTour from "../ScheduleTour/ScheduleTour";
+
+import correct1 from "../../../assets/icons/correct1.svg";
+import location from "../../../assets/icons/bxs-map3.svg";
+import share from "../../../assets/icons/bx-share-alt1.svg";
+import heart from "../../../assets/icons/love-it1.svg";
+import question from "../../../assets/icons/question-circle4.svg";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  /* border: 2px solid black; */
+  border: 2px solid black;
 `;
 const TopWrapper = styled.div`
   display: flex;
@@ -16,14 +24,14 @@ const TopWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  /* border: 2px solid red; */
+  border: 2px solid red;
 `;
 
 const WrapperLeft = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  /* border: 2px solid skyblue; */
+  margin-right: 35px;
+  border: 2px solid ${colors.primaryGreen};
 `;
 
 const ContactAgent = styled(Button)`
@@ -42,26 +50,28 @@ const ContactAgent = styled(Button)`
 
 const ContactActions = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   color: ${colors.textColor};
   font-size: 14px;
+  height: 50px;
 `;
 
 const WrapperRight = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  width: 50%;
   padding: 10px;
   margin: 5px;
+  border: 2px solid hotpink;
 `;
 
 const AmenitiesWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 60%;
+  /* width: 50%; */
 `;
 
 const overviewItems = [
@@ -85,13 +95,53 @@ function Overview() {
       <WrapperLeft>
         <p style={{ color: colors.textColor }}>Reference no:#1065</p>
         <TopWrapper>
-          <h2>Logan, Twin Eagles Point</h2>
+          <h2>
+            Logan, Twin Eagles Point
+            <span>
+              <Image
+                src={correct1}
+                height={24}
+                width={24}
+                style={{ marginLeft: "5px" }}
+              />
+            </span>
+          </h2>
           <ContactAgent>Contact Agent</ContactAgent>
         </TopWrapper>
         <ContactActions>
-          <p style={{ marginRight: "15px" }}>Granger,IA 50109</p>
-          <p style={{ marginRight: "15px" }}>Save</p>
-          <p style={{ marginRight: "15px" }}>Share</p>
+          <p style={{ margin: "0px" }}>
+            <span>
+              <Image
+                src={location}
+                height={24}
+                width={24}
+                style={{ margin: "10px" }}
+              />
+            </span>
+            Granger,IA 50109
+          </p>
+          <p style={{ margin: "15px" }}>
+            <span>
+              <Image
+                src={heart}
+                height={24}
+                width={24}
+                style={{ marginRight: "10px" }}
+              />
+            </span>
+            Save
+          </p>
+          <p style={{ margin: "15px" }}>
+            <span>
+              <Image
+                src={share}
+                height={24}
+                width={24}
+                style={{ marginRight: "10px" }}
+              />
+            </span>
+            Share
+          </p>
         </ContactActions>
         <AmenitiesWrapper>
           {overviewItems.map((item) => (
@@ -115,14 +165,26 @@ function Overview() {
               color: colors.black,
               fontWeight: "bold",
               fontSize: "25px",
+              marginLeft: "10px",
             }}
           >
             $345,900
           </span>
         </strong>
+        <p>
+          EMI. payment: $2,145/mo
+          <span>
+            <Image
+              src={question}
+              height={24}
+              width={24}
+              style={{ marginLeft: "10px" }}
+            />
+          </span>
+        </p>
       </WrapperLeft>
       <WrapperRight>
-        <h4>Contact Form</h4>
+        <ScheduleTour />
       </WrapperRight>
     </Wrapper>
   );
